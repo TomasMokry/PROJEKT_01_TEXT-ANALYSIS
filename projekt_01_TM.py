@@ -1,8 +1,9 @@
 """
 projekt_1.py: první projekt do Engeto Online Python Akademie
-author: Tomas Mokry
+author: Tomáš Mokrý
 email: tomas.mokry@gmail.com
 discord: Tomas M#0922
+
 """
 
 users = {
@@ -45,10 +46,12 @@ user_in = input('user: ')
 password_in = input('password: ')
 print(separator)
 
-if user_in in users.keys() and password_in == users[user_in]:
-    print(f'Welcome to the app, {user_in} \nWe have 3 texts to be analyzed.')
+if user_in in users and password_in == users[user_in]:
+    print(f'Welcome to the app, {user_in}')
+    print('We have 3 texts to be analyzed.')
+    
 else:
-    print(f'unregistered user, terminating the program..')
+    print(f'Unregistered user, terminating the program..')
     quit()
 
 print(separator)
@@ -57,18 +60,16 @@ text_in = input('Enter a number btw. 1 and 3 to select: ')
 
 print(separator)
 
-if not 1 <= int(text_in) <= 3:
-    print('Selected number is not in the list. Terminating the program..')
-    quit()
-elif not text_in.isnumeric():
+if not text_in.isnumeric():
     print('Not number. Terminating the program..')
     quit()
+elif not 1 <= int(text_in) <= 3:
+    print('Selected number is not in the list. Terminating the program..')
+    quit()
 else:
-    text_selected = TEXTS[int(text_in)-1]
+    text_selected = TEXTS[int(text_in) - 1]
 
-#text_splited = text_selected.split(' ')
 text_clean = list()
-
 text_istitle = list()
 text_isupper = list()
 text_islower = list()
@@ -79,19 +80,19 @@ for word in text_selected.split():
 
 # pocet slov
 words_number = len(text_clean)
-# počet slov začínajících velkým písmenem, istitle
+# počet slov začínajících velkým písmenem
 for word in text_clean:
     if word.istitle():
         text_istitle.append(word)
-#počet slov psaných velkými písmeny, isupper
+#počet slov psaných velkými písmeny
 for word in text_clean:
-    if word.isupper():
+    if word.isupper() and word.isalpha():
         text_isupper.append(word)
-#počet slov psaných malými písmeny, islower
+#počet slov psaných malými písmeny
 for word in text_clean:
     if word.islower():
         text_islower.append(word)
-#počet čísel (ne cifer), isnumeric
+#počet čísel (ne cifer)
 for word in text_clean:
     if word.isnumeric():
         numbers.append(word)
@@ -100,26 +101,26 @@ numbers_sum = 0
 for number in numbers:
     numbers_sum = numbers_sum + int(number)
 
-#print(text_clean)
-
 print(f'''
 There are {words_number} words in the selected text.
 There are {len(text_istitle)} titlecase words.
 There are {len(text_isupper)} uppercase words.
 There are {len(text_islower)} lowercase words.
 There are {len(numbers)} numeric strings.
-The sum of all the numbers {numbers_sum}
-''')
+The sum of all the numbers {numbers_sum}'''
+)
 
 print(separator)
 print('LEN', ' |', 'OCCURENCES'.center(35),'| NR.')
 print(separator)
+
 colection = dict()
+
 for word in text_clean:
     if len(word) not in colection:
         colection[len(word)] = 1
     else:
-        colection[len(word)] = colection[len(word)] + 1
+        colection[len(word)] += 1
 
 colection_sorted = sorted(list(colection.keys()))
 

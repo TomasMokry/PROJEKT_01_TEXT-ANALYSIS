@@ -78,25 +78,18 @@ numbers = list()
 for word in text_selected.split():
     text_clean.append(word.strip('.,:'))
 
-# pocet slov
 words_number = len(text_clean)
-# počet slov začínajících velkým písmenem
+
 for word in text_clean:
     if word.istitle():
         text_istitle.append(word)
-#počet slov psaných velkými písmeny
-for word in text_clean:
-    if word.isupper() and word.isalpha():
+    elif word.isupper() and word.isalpha():
         text_isupper.append(word)
-#počet slov psaných malými písmeny
-for word in text_clean:
-    if word.islower():
+    elif word.islower():
         text_islower.append(word)
-#počet čísel (ne cifer)
-for word in text_clean:
-    if word.isnumeric():
+    elif word.isnumeric():
         numbers.append(word)
-#sumu všech čísel (ne cifer) v textu.
+
 numbers_sum = 0
 for number in numbers:
     numbers_sum = numbers_sum + int(number)
@@ -123,7 +116,6 @@ for word in text_clean:
         colection[len(word)] += 1
 
 colection_sorted = sorted(list(colection.keys()))
-
 
 for index in colection_sorted:
     hvezdy = colection[index] * "*"

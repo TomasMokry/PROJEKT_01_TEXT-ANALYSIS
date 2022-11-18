@@ -121,5 +121,3 @@ for index in colection_sorted:
     hvezdy = colection[index] * "*"
     print(f'{index:4} | {hvezdy:35} | {colection[index]}')
 
-#tento projekt je odevzdan a schvalen
-test = 'pokus'

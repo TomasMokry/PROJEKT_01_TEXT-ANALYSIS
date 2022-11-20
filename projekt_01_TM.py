@@ -122,10 +122,7 @@ for index in colection_sorted:
     print(f'{index:4} | {hvezdy:35} | {colection[index]}')
 
     
-#new test code
-for index in colection_sorted:
-    hvezdy = colection[index] * "*"
-    print(f'{index:4} | {hvezdy:35} | {colection[index]}')
+
 
 
 
